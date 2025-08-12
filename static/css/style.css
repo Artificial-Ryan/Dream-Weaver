@@ -1,0 +1,229 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #222;
+    color: #eee;
+    margin: 0;
+}
+
+.container {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 90%;
+    max-width: 800px;
+}
+
+h1 {
+    color: #0f0;
+}
+
+.input-section {
+    margin-bottom: 20px;
+}
+
+#promptInput {
+    width: calc(100% - 120px);
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #444;
+    color: #eee;
+}
+
+#generateBtn {
+    padding: 10px 15px;
+    background-color: #00f;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#generateBtn:hover {
+    background-color: #00c;
+}
+
+/* New styles for options section */
+.options-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #555;
+}
+
+.options-section h2 {
+    color: #0f0;
+    margin-bottom: 20px;
+}
+
+.category-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.category-group h3 {
+    color: #0ff;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+}
+
+.category-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #444;
+    color: #eee;
+    appearance: none; /* Remove default select arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23eee%22%20d%3D%22M287%2C114.7L159.7%2C242c-3.8%2C3.8-8.9%2C5.7-14.2%2C5.7s-10.4-1.9-14.2-5.7L5.4%2C114.7c-7.5-7.5-7.5-19.8%2C0-27.3s19.8-7.5%2C27.3%2C0l127.3%2C127.3l127.3-127.3c7.5-7.5%2C19.8-7.5%2C27.3%2C0S294.5%2C107.2%2C287%2C114.7z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 12px;
+}
+
+.category-group select option {
+    background-color: #444;
+    color: #eee;
+}
+
+#generateWithOptionsBtn {
+    padding: 10px 15px;
+    background-color: #0a0;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#generateWithOptionsBtn:hover {
+    background-color: #070;
+}
+
+
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.image-item {
+    background-color: #444;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.image-gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid #555;
+    cursor: pointer; /* Indicate clickable */
+}
+
+.parameters-display {
+    font-size: 0.8em;
+    color: #bbb;
+    margin-top: 10px;
+    text-align: left;
+    width: 100%;
+}
+
+.parameters-display p {
+    margin: 2px 0;
+}
+
+.download-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #00a;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.download-btn:hover {
+    background-color: #007;
+}
+
+/* Lightbox Styles */
+.lightbox {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    padding-top: 50px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+.lightbox-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain; /* Ensure image fits within bounds */
+}
+
+.lightbox-caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px; /* Adjust as needed */
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.download-lightbox-btn {
+    display: block;
+    width: fit-content;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: #00a;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.download-lightbox-btn:hover {
+    background-color: #007;
+}

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Weaver</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Dream Weaver</h1>
+        <p>Enter a prompt or select options to let the AI weave your dreams into images.</p>
+        
+        <div class="input-section">
+            <input type="text" id="promptInput" placeholder="e.g., A futuristic city at sunset">
+            <button id="generateBtn">Weave Dreams</button>
+        </div>
+
+        <div class="options-section">
+            <h2>Or Select Your Dream Ingredients:</h2>
+
+            <div class="category-group">
+                <h3>Genre/Theme</h3>
+                <select id="genreThemeSelect">
+                    <option value="">-- Select --</option>
+                    <optgroup label="Sci-Fi">
+                        <option value="cyberpunk">Cyberpunk</option>
+                        <option value="steampunk">Steampunk</option>
+                        <option value="space opera">Space Opera</option>
+                        <option value="dystopian">Dystopian</option>
+                        <option value="alien worlds">Alien Worlds</option>
+                        <option value="mecha">Mecha</option>
+                        <option value="solarpunk">Solarpunk</option>
+                        <option value="post-apocalyptic">Post-Apocalyptic</option>
+                        <option value="utopian">Utopian</option>
+                        <option value="time travel">Time Travel</option>
+                        <option value="genetic engineering">Genetic Engineering</option>
+                        <option value="nanotechnology">Nanotechnology</option>
+                    </optgroup>
+                    <optgroup label="Fantasy">
+                        <option value="high fantasy">High Fantasy</option>
+                        <option value="dark fantasy">Dark Fantasy</option>
+                        <option value="urban fantasy">Urban Fantasy</option>
+                        <option value="mythological">Mythological</option>
+                        <option value="fairy tale">Fairy Tale</option>
+                        <option value="sword & sorcery">Sword & Sorcery</option>
+                        <option value="epic fantasy">Epic Fantasy</option>
+                        <option value="low fantasy">Low Fantasy</option>
+                        <option value="paranormal">Paranormal</option>
+                        <option value="shamanic">Shamanic</option>
+                        <option value="elemental">Elemental</option>
+                    </optgroup>
+                    <optgroup label="Horror">
+                        <option value="cosmic horror">Cosmic Horror</option>
+                        <option value="gothic horror">Gothic Horror</option>
+                        <option value="zombie apocalypse">Zombie Apocalypse</option>
+                        <option value="psychological thriller">Psychological Thriller</option>
+                        <option value="creature feature">Creature Feature</option>
+                        <option value="supernatural">Supernatural</option>
+                        <option value="body horror">Body Horror</option>
+                        <option value="slasher">Slasher</option>
+                        <option value="found footage">Found Footage</option>
+                        <option value="folk horror">Folk Horror</option>
+                    </optgroup>
+                    <optgroup label="Nature">
+                        <option value="landscapes">Landscapes</option>
+                        <option value="wildlife">Wildlife</option>
+                        <option value="botanical">Botanical</option>
+                        <option value="underwater">Underwater</option>
+                        <option value="celestial">Celestial</option>
+                        <option value="weather phenomena">Weather Phenomena</option>
+                        <option value="seasons">Seasons</option>
+                        <option value="deserts">Deserts</option>
+                        <option value="jungles">Jungles</option>
+                        <option value="forests">Forests</option>
+                        <option value="mountains">Mountains</option>
+                        <option value="oceans">Oceans</option>
+                        <option value="caves">Caves</option>
+                        <option value="islands">Islands</option>
+                        <option value="volcanoes">Volcanoes</option>
+                    </optgroup>
+                    <optgroup label="Abstract">
+                        <option value="geometric">Geometric</option>
+                        <option value="fluid">Fluid</option>
+                        <option value="organic">Organic</option>
+                        <option value="glitch art">Glitch Art</option>
+                        <option value="psychedelic">Psychedelic</option>
+                        <option value="minimalist">Minimalist</option>
+                        <option value="cubist">Cubist</option>
+                        <option value="expressionist">Expressionist</option>
+                        <option value="surrealist">Surrealist</option>
+                        <option value="pop art">Pop Art</option>
+                        <option value="street art">Street Art</option>
+                    </optgroup>
+                    <optgroup label="Historical">
+                        <option value="ancient civilizations">Ancient Civilizations</option>
+                        <option value="medieval">Medieval</option>
+                        <option value="renaissance">Renaissance</option>
+                        <option value="victorian">Victorian</option>
+                        <option value="roaring twenties">Roaring Twenties</option>
+                        <option value="future history">Future History</option>
+                        <option value="industrial revolution">Industrial Revolution</option>
+                        <option value="wild west">Wild West</option>
+                        <option value="edo period japan">Edo Period Japan</option>
+                        <option value="viking age">Viking Age</option>
+                    </optgroup>
+                    <optgroup label="Surreal">
+                        <option value="dreamscape">Dreamscape</option>
+                        <option value="dadaism">Dadaism</option>
+                        <option value="pop surrealism">Pop Surrealism</option>
+                        <option value="magical realism">Magical Realism</option>
+                        <option value="absurdist">Absurdist</option>
+                        <option value="psychedelic">Psychedelic</option>
+                        <option value="hypnagogic">Hypnagogic</option>
+                    </optgroup>
+                    <optgroup label="Other">
+                        <option value="noir">Noir</option>
+                        <option value="western">Western</option>
+                        <option value="sports">Sports</option>
+                        <option value="musical">Musical</option>
+                        <option value="documentary">Documentary</option>
+                        <option value="comedy">Comedy</option>
+                        <option value="tragedy">Tragedy</option>
+                        <option value="romance">Romance</option>
+                        <option value="thriller">Thriller</option>
+                        <option value="mystery">Mystery</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <div class="category-group">
+                <h3>Art Style</h3>
+                <select id="artStyleSelect">
+                    <option value="">-- Select --</option>
+                    <optgroup label="Painting">
+                        <option value="impressionism">Impressionism</option>
+                        <option value="cubism">Cubism</option>
+                        <option value="renaissance">Renaissance</option>
+                        <option value="watercolor">Watercolor</option>
+                        <option value="oil painting">Oil Painting</option>
+                        <option value="digital painting">Digital Painting</option>
+                        <option value="abstract expressionism">Abstract Expressionism</option>
+                        <option value="pointillism">Pointillism</option>
+                        <option value="fauvism">Fauvism</option>
+                        <option value="baroque">Baroque</option>
+                        <option value="rococo">Rococo</option>
+                        <option value="romanticism">Romanticism</option>
+                        <option value="realism">Realism</option>
+                        <option value="hyperrealism">Hyperrealism</option>
+                    </optgroup>
+                    <optgroup label="Drawing">
+                        <option value="sketch">Sketch</option>
+                        <option value="line art">Line Art</option>
+                        <option value="comic book">Comic Book</option>
+                        <option value="manga">Manga</option>
+                        <option value="charcoal">Charcoal</option>
+                        <option value="pastel">Pastel</option>
+                        <option value="ink">Ink</option>
+                        <option value="pencil">Pencil</option>
+                        <option value="crayon">Crayon</option>
+                        <option value="doodle">Doodle</option>
+                        <option value="technical drawing">Technical Drawing</option>
+                    </optgroup>
+                    <optgroup label="Digital">
+                        <option value="pixel art">Pixel Art</option>
+                        <option value="vector art">Vector Art</option>
+                        <option value="concept art">Concept Art</option>
+                        <option value="3d render">3D Render</option>
+                        <option value="photorealistic">Photorealistic</option>
+                        <option value="glitch art">Glitch Art</option>
+                        <option value="low poly">Low Poly</option>
+                        <option value="voxel art">Voxel Art</option>
+                        <option value="generative art">Generative Art</option>
+                        <option value="ai art">AI Art</option>
+                        <option value="nft art">NFT Art</option>
+                    </optgroup>
+                    <optgroup label="Other">
+                        <option value="anime">Anime</option>
+                        <option value="cartoon">Cartoon</option>
+                        <option value="claymation">Claymation</option>
+                        <option value="stop-motion">Stop-Motion</option>
+                        <option value="collage">Collage</option>
+                        <option value="stained glass">Stained Glass</option>
+                        <option value="mosaic">Mosaic</option>
+                        <option value="sculpture">Sculpture</option>
+                        <option value="photography (black & white)">Photography (Black & White)</option>
+                        <option value="photography (sepia)">Photography (Sepia)</option>
+                        <option value="photography (hdr)">Photography (HDR)</option>
+                        <option value="film still">Film Still</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <div class="category-group">
+                <h3>Subject/Character</h3>
+                <select id="subjectCharacterSelect">
+                    <option value="">-- Select --</option>
+                    <optgroup label="Creatures">
+                        <option value="dragons">Dragons</option>
+                        <option value="unicorns">Unicorns</option>
+                        <option value="robots">Robots</option>
+                        <option value="aliens">Aliens</option>
+                        <option value="monsters">Monsters</option>
+                        <option value="mythical beasts">Mythical Beasts</option>
+                        <option value="animals">Animals</option>
+                        <option value="dinosaurs">Dinosaurs</option>
+                        <option value="insects">Insects</option>
+                        <option value="birds">Birds</option>
+                        <option value="fish">Fish</option>
+                        <option value="amphibians">Amphibians</option>
+                        <option value="reptiles">Reptiles</option>
+                        <option value="cryptids">Cryptids</option>
+                    </optgroup>
+                    <optgroup label="People">
+                        <option value="portraits">Portraits</option>
+                        <option value="figures">Figures</option>
+                        <option value="occupations">Occupations</option>
+                        <option value="emotions">Emotions</option>
+                        <option value="historical figures">Historical Figures</option>
+                        <option value="futuristic humans">Futuristic Humans</option>
+                        <option value="cyborgs">Cyborgs</option>
+                        <option value="androids">Androids</option>
+                        <option value="elves">Elves</option>
+                        <option value="dwarves">Dwarves</option>
+                        <option value="orcs">Orcs</option>
+                        <option value="goblins">Goblins</option>
+                        <option value="mermaids">Mermaids</option>
+                        <option value="vampires">Vampires</option>
+                        <option value="werewolves">Werewolves</option>
+                    </optgroup>
+                    <optgroup label="Objects">
+                        <option value="vehicles">Vehicles</option>
+                        <option value="weapons">Weapons</option>
+                        <option value="architecture">Architecture</option>
+                        <option value="food">Food</option>
+                        <option value="everyday items">Everyday Items</option>
+                        <option value="magical artifacts">Magical Artifacts</option>
+                        <option value="technology">Technology</option>
+                        <option value="books">Books</option>
+                        <option value="musical instruments">Musical Instruments</option>
+                        <option value="jewelry">Jewelry</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <div class="category-group">
+                <h3>Environment/Setting</h3>
+                <select id="environmentSettingSelect">
+                    <option value="">-- Select --</option>
+                    <optgroup label="Outdoor">
+                        <option value="forest">Forest</option>
+                        <option value="mountain">Mountain</option>
+                        <option value="desert">Desert</option>
+                        <option value="ocean">Ocean</option>
+                        <option value="cityscape">Cityscape</option>
+                        <option value="rural">Rural</option>
+                        <option value="space">Space</option>
+                        <option value="underwater">Underwater</option>
+                        <option value="jungle">Jungle</option>
+                        <option value="arctic">Arctic</option>
+                        <option value="volcanic">Volcanic</option>
+                        <option value="beach">Beach</option>
+                        <option value="island">Island</option>
+                        <option value="canyon">Canyon</option>
+                        <option value="glacier">Glacier</option>
+                        <option value="swamp">Swamp</option>
+                        <option value="tundra">Tundra</option>
+                        <option value="savannah">Savannah</option>
+                        <option value="waterfall">Waterfall</option>
+                        <option value="river">River</option>
+                        <option value="lake">Lake</option>
+                        <option value="valley">Valley</option>
+                    </optgroup>
+                    <optgroup label="Indoor">
+                        <option value="room">Room</option>
+                        <option value="laboratory">Laboratory</option>
+                        <option value="castle interior">Castle Interior</option>
+                        <option value="spaceship interior">Spaceship Interior</option>
+                        <option value="dungeon">Dungeon</option>
+                        <option value="library">Library</option>
+                        <option value="museum">Museum</option>
+                        <option value="factory">Factory</option>
+                        <option value="cyberpunk alley">Cyberpunk Alley</option>
+                        <option value="cathedral">Cathedral</option>
+                        <option value="temple">Temple</option>
+                        <option value="cave system">Cave System</option>
+                        <option value="underground bunker">Underground Bunker</option>
+                        <option value="abandoned building">Abandoned Building</option>
+                        <option value="futuristic city interior">Futuristic City Interior</option>
+                    </optgroup>
+                    <optgroup label="Time of Day">
+                        <option value="dawn">Dawn</option>
+                        <option value="morning">Morning</option>
+                        <option value="midday">Midday</option>
+                        <option value="sunset">Sunset</option>
+                        <option value="night">Night</option>
+                        <option value="midnight">Midnight</option>
+                        <option value="twilight">Twilight</option>
+                        <option value="golden hour">Golden Hour</option>
+                        <option value="blue hour">Blue Hour</option>
+                    </optgroup>
+                    <optgroup label="Weather">
+                        <option value="sunny">Sunny</option>
+                        <option value="rainy">Rainy</option>
+                        <option value="snowy">Snowy</option>
+                        <option value="stormy">Stormy</option>
+                        <option value="misty">Misty</option>
+                        <option value="foggy">Foggy</option>
+                        <option value="cloudy">Cloudy</option>
+                        <option value="clear">Clear</option>
+                        <option value="windy">Windy</option>
+                        <option value="calm">Calm</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <div class="category-group">
+                <h3>Lighting/Atmosphere</h3>
+                <select id="lightingAtmosphereSelect">
+                    <option value="">-- Select --</option>
+                    <optgroup label="Lighting">
+                        <option value="golden hour">Golden Hour</option>
+                        <option value="moonlight">Moonlight</option>
+                        <option value="neon">Neon</option>
+                        <option value="volumetric">Volumetric</option>
+                        <option value="dramatic">Dramatic</option>
+                        <option value="soft">Soft</option>
+                        <option value="harsh">Harsh</option>
+                        <option value="backlit">Backlit</option>
+                        <option value="spotlight">Spotlight</option>
+                        <option value="ambient">Ambient</option>
+                        <option value="cinematic">Cinematic</option>
+                        <option value="studio lighting">Studio Lighting</option>
+                        <option value="natural light">Natural Light</option>
+                        <option value="artificial light">Artificial Light</option>
+                    </optgroup>
+                    <optgroup label="Atmosphere">
+                        <option value="misty">Misty</option>
+                        <option value="rainy">Rainy</option>
+                        <option value="snowy">Snowy</option>
+                        <option value="stormy">Stormy</option>
+                        <option value="ethereal">Ethereal</option>
+                        <option value="gloomy">Gloomy</option>
+                        <option value="vibrant">Vibrant</option>
+                        <option value="serene">Serene</option>
+                        <option value="mysterious">Mysterious</option>
+                        <option value="ominous">Ominous</option>
+                        <option value="peaceful">Peaceful</option>
+                        <option value="chaotic">Chaotic</option>
+                        <option value="energetic">Energetic</option>
+                        <option value="calm">Calm</option>
+                        <option value="intense">Intense</option>
+                        <option value="dreamy">Dreamy</option>
+                        <option value="melancholy">Melancholy</option>
+                        <option value="joyful">Joyful</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <button id="generateWithOptionsBtn">Weave Dreams with Options</button>
+        </div>
+
+        <div class="loading" style="display: none;">Generating dreams...</div>
+        <div class="expanded-prompt-display" style="display: none;">
+            <h3>Expanded Prompt:</h3>
+            <p id="expandedPromptText"></p>
+        </div>
+        <div class="image-gallery">
+            <!-- Images will be displayed here -->
+        </div>
+        <div class="error" style="display: none; color: red;"></div>
+    </div>
+
+    <!-- The Lightbox/Modal Structure -->
+    <div id="lightbox" class="lightbox" style="display: none;">
+        <span class="close-button">&times;</span>
+        <img class="lightbox-content" id="lightboxImage">
+        <div id="lightboxCaption" class="lightbox-caption"></div>
+        <a class="download-lightbox-btn" id="downloadLightboxBtn" download="dream_weaver_image.png">Download</a>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
