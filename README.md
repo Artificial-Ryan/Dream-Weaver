@@ -106,4 +106,4 @@ Follow these steps to get Dream Weaver up and running on your local machine.
 
 ## 📄 License
 
-This project is open-source and available under the [MIT License](LICENSE). (You might want to create a LICENSE file if you don't have one.)
+This project is open-source and available under the [MIT License](LICENSE).
